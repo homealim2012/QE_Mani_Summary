@@ -1,0 +1,322 @@
+@charset "UTF-8";
+/**
+ *
+ * @authors ffftzh (ffftzh@gmail.com)
+ * @date    2016-08-06 14:05:47
+ * @version 1.0
+ */
+
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image-gallery {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    /*background-color: #0D8278;*/
+}
+
+.photo-container {
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+    font-size: 0;
+    transition: left ease 800ms;
+}
+
+.photo-container > .photo-page {
+    height: 100%;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    text-align: center;
+    position: absolute;
+    flex-wrap: wrap;
+}
+
+.postcard {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 275px;
+    height: 260px;
+    /*box-shadow: 10px 10px 10px 1px #0F0F0F, 0 0 30px 10px #F5F5F5 inset;*/
+    box-shadow: 0 4px 23px 5px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+
+}
+
+.popLayer {
+    top: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-color: black;
+    opacity: 0.6;
+}
+
+.pop-item {
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0px;
+    width: 550px;
+    height: 520px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: red;
+    transition: all ease 400ms;
+    z-index: 2;
+}
+
+.pop-left {
+    animation: intoleft 400ms ease 1 forwards;
+}
+
+.pop-right {
+    animation: intoright 400ms ease 1 forwards;
+}
+
+@keyframes intoleft {
+    0% {
+        transform: translate(300%, 0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes intoright {
+    0% {
+        transform: translate(-300%, 0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+.out-left {
+    animation: outleft 400ms ease 1 forwards;
+}
+
+.out-right {
+    animation: outright 400ms ease 1 forwards;
+}
+
+@keyframes outleft {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-300%, 0);
+        opacity: 0;
+    }
+}
+
+@keyframes outright {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(300%, 0);
+        opacity: 0;
+    }
+}
+
+.popLayer > div {
+    display: block;
+    margin: auto;
+    position: absolute;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.popLayer > .close-button {
+    right: 30px;
+    top: 30px;
+    font-size: 60px;
+    line-height: 30px;
+    color: #FFFFFF;
+    transform: rotate(45deg);
+}
+
+.popLayer > .left-array {
+    top: 0;
+    bottom: 0;
+    left: 50px;
+    width: 30px;
+    height: 170px;
+}
+
+.left-array:before {
+    content: "";
+    transform: rotate(20deg);
+    top: 0px;
+    left: 15px;
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-top: solid 43px #fff;
+    border-right: solid 1px #fff;
+    border-bottom: solid 44px #fff;
+    border-left: solid 1px #fff;
+    position: absolute;
+}
+
+.left-array:after {
+    top: 80px;
+    left: 15px;
+    content: "";
+    display: block;
+    width: 0px;
+    height: 0px;
+    transform: rotate(-20deg);
+    border-top: solid 43px #fff;
+    border-right: solid 1px #fff;
+    border-bottom: solid 44px #fff;
+    border-left: solid 1px #fff;
+    position: absolute;
+}
+
+.popLayer > .right-array {
+    top: 0;
+    bottom: 0;
+    right: 50px;
+    width: 30px;
+    height: 170px;
+}
+
+.right-array:before {
+    content: "";
+    transform: rotate(-20deg);
+    top: 0px;
+    left: 15px;
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-top: solid 43px #fff;
+    border-right: solid 1px #fff;
+    border-bottom: solid 44px #fff;
+    border-left: solid 1px #fff;
+    position: absolute;
+}
+
+.right-array:after {
+    top: 80px;
+    left: 15px;
+    content: "";
+    display: block;
+    width: 0px;
+    height: 0px;
+    transform: rotate(20deg);
+    border-top: solid 43px #fff;
+    border-right: solid 1px #fff;
+    border-bottom: solid 44px #fff;
+    border-left: solid 1px #fff;
+    position: absolute;
+}
+
+.left-slideOut {
+    animation: leftOut 800ms ease 1 forwards;
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+}
+
+.right-slideOut {
+    animation: rightOut 800ms ease 1 forwards;
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+}
+
+.left-slideIn {
+    animation: leftIn 800ms ease 1 forwards;
+    transform: translate(0, 0) scale(0.1);
+    opacity: 0;
+}
+
+.right-slideIn {
+    animation: rightIn 800ms ease 1 forwards;
+    transform: translate(0, 0) scale(0.1);
+    opacity: 0;
+}
+
+@keyframes leftOut {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, 0) scale(0.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0, 0) scale(0.1);
+        opacity: 0;
+    }
+}
+
+@keyframes rightOut {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(50%, 0) scale(0.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0, 0) scale(0.1);
+        opacity: 0;
+    }
+}
+
+@keyframes leftIn {
+    0% {
+        transform: translate(0, 0) scale(0.1);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, 0) scale(0.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes rightIn {
+    0% {
+        transform: translate(0, 0) scale(0.1);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(50%, 0) scale(0.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+}

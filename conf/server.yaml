@@ -1,0 +1,22 @@
+PUB_CONF:
+  db:
+    host: localhost
+    database: auto_summary
+    user: user
+    port: 3306
+    password: user
+  #  echo : true
+  redis:
+    enable: true
+    host: localhost
+    port: 6379
+    db: 0
+    password:
+  cache:
+    load: 1
+    type: REDIS
+  log:
+    logPath: logs
+    logLevel: DEBUG
+  pool:
+    maxWorkers: 1

@@ -1,0 +1,23 @@
+API_NAME="autosum"
+API_VERSION="1.0.0"
+API_PORT=8089
+IMAGE_NAME="py3-autosum-app"
+CON_NAME=$API_NAME-$API_VERSION
+
+cid=$(docker ps  -a| grep "$CON_NAME" | awk '{print $1}')
+if [ "$cid" != "" ]; then
+   docker rm -f $cid
+fi
+
+imgid=$(docker images| grep "$IMAGE_NAME" | awk '{print $3}')
+if [ "$imgid" != "" ]; then
+   docker rmi -f $imgid
+fi
+
+docker build --rm -t $IMAGE_NAME .
+
+docker run -d -e conf=docker-192 -p $API_PORT:8089 -v /etc/localtime:/etc/localtime:ro \
+-v /home/docker/auto_summary_python/logs:/home/auto_summary_python/logs \
+-v /home/docker/auto_summary_python/server_data:/home/auto_summary_python/data \
+-v /home/docker/auto_summary_python/data:/home/auto_summary_python/model/data \
+--name $CON_NAME $IMAGE_NAME -w 4

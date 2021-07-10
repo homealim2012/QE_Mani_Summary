@@ -1,0 +1,6 @@
+IMAGE_NAME="py3-autosum-envs"
+imgid=$(docker images| grep "$IMAGE_NAME" | awk '{print $3}')
+if [ "$imgid" != "" ]; then
+   docker rmi -f $imgid
+fi
+docker build ./envs --rm --tag=$IMAGE_NAME

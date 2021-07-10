@@ -1,0 +1,22 @@
+PUB_CONF:
+  db:
+    host: 172.17.0.1
+    database: auto_summary
+    user: docker
+    port: 3306
+    password: docker
+  #  echo : true
+  cache:
+    load: 1
+    type: FILE
+  redis:
+    enable: false
+    host: 172.17.0.1
+    port: 6379
+    db: 0
+    password:
+  log:
+    logPath: logs
+    logLevel: DEBUG
+  pool:
+    maxWorkers: 4
