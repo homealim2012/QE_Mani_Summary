@@ -16,7 +16,7 @@ fi
 
 docker build --rm -t $IMAGE_NAME .
 
-docker run -d -e conf=docker-192 -p $API_PORT:8089 -v /etc/localtime:/etc/localtime:ro \
+docker run -d -e conf=docker -p $API_PORT:8089 -v /etc/localtime:/etc/localtime:ro \
 -v /home/docker/auto_summary_python/logs:/home/auto_summary_python/logs \
 -v /home/docker/auto_summary_python/server_data:/home/auto_summary_python/data \
 -v /home/docker/auto_summary_python/data:/home/auto_summary_python/model/data \

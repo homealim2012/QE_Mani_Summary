@@ -1,0 +1,41 @@
+拉取镜像：
+docker pull mysql:5.7
+
+容器启动：
+docker run -p 3306:3306 --restart=always --name mysql -v /opt/docker/mysql/mysql.cnf:/etc/mysql/mysql.cnf  -v /opt/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
+（第一次有-e）
+
+配置文件：
+mysql.cnf
+[client]
+default-character-set=utf8
+
+[mysql]
+default-character-set=utf8
+
+[mysqld.server]
+default-character-set=utf8
+
+[mysqld_safe]
+default-character-set=utf8
+
+[mysqld]
+character-set-server=utf8
+init_connect='SET NAMES utf8'
+lower_case_table_names=1
+port=3306
+
+创建数据库
+create database `auto_summary` character set utf8 collate utf8_general_ci;
+
+创建用户
+create user 'user'@'%' identified by 'user';
+create user 'docker'@'172.17.%' identified by 'docker';
+
+授权
+grant all privileges on `auto_summary`.* to 'user'@'%';
+grant all privileges on `auto_summary`.* to 'docker'@'172.17.%';
+flush privileges;
+
+导入数据库
+source setup/auto_summary.sql

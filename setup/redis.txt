@@ -1,0 +1,3 @@
+ docker pull redis
+ docker run -d -p 6379:6379 --restart=always --name redis redis --requirepass "autosum"
+ docker exec -it redis redis-cli -a "autosum"

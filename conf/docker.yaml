@@ -14,7 +14,7 @@ PUB_CONF:
     host: 172.17.0.1
     port: 6379
     db: 0
-    password:
+    password: autosum
   log:
     logPath: logs
     logLevel: DEBUG
