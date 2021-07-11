@@ -25,8 +25,8 @@ def main(para, model_name, result_name):
 
 if __name__ == '__main__':
     
-    main({ "__datasets__": ['DUC2005', 'DUC2006', 'DUC2007', 'TAC2008', 'TAC2009'],
-           "__sumlength__": [250, 250, 250, 100, 100],
+    main({ "__datasets__": ['DUC2005', 'DUC2006', 'DUC2007'],
+           "__sumlength__": [250, 250, 250],
              "a": 1, "max_dis": 4, "max_word_count": 5000
              , "w": 8.0 , "Amr": 0.8 , "use_sim_word": 0
              , "mean_rate": 1 , "var_rate": 1 , "P_rate": 0.4
