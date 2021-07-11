@@ -33,6 +33,8 @@ ROUGE-1.5.5(Perl)
 
 7.  参见model/readme.txt第三条构建词语矩阵相似度
 
+8.  数据预处理已经完成，如需参考，可参阅 model/source/preprocessing/readme.txt
+
 #### 配置文件 conf/*.yaml
 可以通过配置环境变量 conf 来设置配置文件名
 1、db: mysql数据库配置
