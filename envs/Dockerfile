@@ -2,6 +2,7 @@ FROM python:3.6-alpine
 
 MAINTAINER jiaquanye@buaa.edu.cn
 
+COPY requirements.txt /requirements.txt
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
     apk add --no-cache --virtual temp-apks expat-dev make gcc g++ perl-dev && \
     apk add --no-cache db-dev && \
