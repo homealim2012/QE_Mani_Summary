@@ -1,6 +1,7 @@
+.git
 *.md
 model/data/*
 data/*
-envs/*
+envs
 logs/*
-setup/*
+setup
