@@ -1,0 +1,6 @@
+*.md
+model/data/*
+data/*
+envs/*
+logs/*
+setup/*
