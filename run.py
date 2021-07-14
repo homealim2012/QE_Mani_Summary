@@ -82,11 +82,8 @@ def load_multiprocessing_manager(conf='conf/%s.yaml'%'server'):
         OutputService.lock = mgr.RLock()
         OutputService.pool = multiprocessing.Pool(config.PUB_CONF.pool.maxWorkers)
 
-if multiprocessing.current_process().name == 'MainProcess':
-    config = load_config('conf/%s.yaml' % os.environ.get('conf', 'server'))
-    load_multiprocessing_manager('conf/%s.yaml' % os.environ.get('conf', 'server')) if platform.system() == 'Linux' else None
-
 if __name__ == '__main__' and multiprocessing.current_process().name == 'MainProcess':
-    load_multiprocessing_manager('conf/%s.yaml' % os.environ.get('conf', 'server')) if platform.system() == 'Windows' else None
+    load_multiprocessing_manager('conf/%s.yaml' % os.environ.get('conf', 'server'))
+    config = load_config('conf/%s.yaml' % os.environ.get('conf', 'server'))
     app.run(host='0.0.0.0', port=8089, debug=False)
 
