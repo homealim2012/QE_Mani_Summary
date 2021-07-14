@@ -3,7 +3,7 @@ from model.evaluation import ROUGE
 
 def main(para, model_name, result_name):
 
-    duc_years = para.get('__datasets__', ['DUC2005', 'DUC2006', 'DUC2007'])
+    duc_years = para.get('__datasets__', ['DUC2005', 'DUC2006', 'DUC2007','TAC2008','TAC2009'])
     rouge_length = para.get('__sumlength__', [250, 250, 250, 100, 100])
 
     for i, duc_year in enumerate(duc_years):

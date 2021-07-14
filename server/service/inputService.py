@@ -62,8 +62,8 @@ class para:
     def __init__(self):
         self.__method__ = 'ManifoldRanking'
         self.__group__ = None
-        self.__datasets__ = ['DUC2005','DUC2006','DUC2007','TAC2008','TAC2009']
-        self.__sumlength__ = [250, 250, 250, 100, 100]
+        self.__datasets__ = ['DUC2005','DUC2006','DUC2007']
+        self.__sumlength__ = [250, 250, 250]
         self.a = 1
         self.max_dis = 4
         self.max_word_count = 5000
