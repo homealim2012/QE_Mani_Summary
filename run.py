@@ -84,10 +84,9 @@ def load_multiprocessing_manager(conf='conf/%s.yaml'%'server'):
 
 if multiprocessing.current_process().name == 'MainProcess':
     config = load_config('conf/%s.yaml' % os.environ.get('conf', 'server'))
-    if platform.system() == 'Linux':
-        load_multiprocessing_manager('conf/%s.yaml' % os.environ.get('conf', 'server'))
+    load_multiprocessing_manager('conf/%s.yaml' % os.environ.get('conf', 'server')) if platform.system() == 'Linux' else None
 
 if __name__ == '__main__' and multiprocessing.current_process().name == 'MainProcess':
-    load_multiprocessing_manager('conf/%s.yaml' % os.environ.get('conf', 'server'))
+    load_multiprocessing_manager('conf/%s.yaml' % os.environ.get('conf', 'server')) if platform.system() == 'Windows' else None
     app.run(host='0.0.0.0', port=8089, debug=False)
 
