@@ -1,6 +1,12 @@
 import pickle
 import os
-import server.settings
+try:
+    import server.settings
+except:
+    print('import server.settings error')
+    import easydict
+    server = easydict.EasyDict()
+    server.settings = object()
 
 class MapCache(object):
 

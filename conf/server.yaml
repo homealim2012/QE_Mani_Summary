@@ -1,5 +1,6 @@
 PUB_CONF:
   db:
+    type: sqlite
     host: localhost
     database: auto_summary
     user: user

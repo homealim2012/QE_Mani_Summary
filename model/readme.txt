@@ -4,4 +4,3 @@
 4、 if you need to use ROUGE, please to search "windows ROUGE" for more help.
 
 单独运行main.py时 需要将该文件移动到model文件夹外
-并且将cache/cache.py文件中的import server.settings替换成import easydict;server = easydict.EasyDict();server.settings = object()

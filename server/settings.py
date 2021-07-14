@@ -12,19 +12,18 @@ def connectDB(config):
     if getattr(server.settings, 'engine', None):
         return
 
-    url = 'mysql+mysqlconnector://{user}:{password}@{host}:{port}/{database}'.format(**config.PUB_CONF.db);
+    echo = True if config.PUB_CONF.db.get('echo', False) else False
+    if config.PUB_CONF.db.type == 'mysql':
+        url = 'mysql+mysqlconnector://{user}:{password}@{host}:{port}/{database}'.format(**config.PUB_CONF.db)
+        server.settings.engine = create_engine(url, pool_size=20, echo=echo, pool_timeout=300,  # 池中没有线程最多等待的时间，否则报错（秒）
+                                               pool_recycle=600)  # 多久之后对线程池中的线程进行一次连接的回收（重置）（秒）
+        print('connect to mysql server')
+    else:
+        url = 'sqlite:///data/{database}.db'.format(**config.PUB_CONF.db)
+        server.settings.engine = create_engine(url, echo=echo)
+        print('connect to sqlite server')
 
-    echo = False;
-    if config.PUB_CONF.db.get('echo', False):
-        echo = True;
-
-    server.settings.engine = create_engine(url,
-                                           pool_size=20,
-                                           echo=echo,
-                                           pool_timeout=300,  #池中没有线程最多等待的时间，否则报错（秒）
-                                           pool_recycle=600)  #多久之后对线程池中的线程进行一次连接的回收（重置）（秒）
     server.settings.Session = sessionmaker(server.settings.engine)
-    print('connect to mysql server')
 
 def connectRedis(config):
 

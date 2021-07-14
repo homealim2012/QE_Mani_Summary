@@ -1,5 +1,6 @@
 PUB_CONF:
   db:
+    type: sqlite
     host: 172.17.0.1
     database: auto_summary
     user: docker
