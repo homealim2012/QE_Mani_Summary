@@ -102,6 +102,7 @@ def removeOld():
                     task.setStatus(Task.Completed,OutputService.task_dict,OutputService.event,OutputService.lock)
                     success_arr.append(taskid)
             except Exception as e:
+                logging.error(traceback.format_exc())
                 fail_arr.append(taskid)
         if task.status == Task.Completed:
             if (datetime.datetime.now() - task.finishTime).days > 2:
